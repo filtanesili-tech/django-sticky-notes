@@ -1,1 +1,1 @@
-Paste the URL of your public GitHub repository here after you create and push it.
+https://github.com/filtanesili-tech/django-sticky-notes
