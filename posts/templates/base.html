@@ -1,0 +1,23 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Sticky Notes{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'posts/style.css' %}">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="{% url 'note_list' %}">🗒️ Sticky Notes</a>
+    <a class="button button-light" href="{% url 'note_create' %}">＋ New note</a>
+  </header>
+  <main class="container">
+    {% if messages %}
+      {% for message in messages %}<div class="message">{{ message }}</div>{% endfor %}
+    {% endif %}
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="site-footer">Your thoughts, organised in one place.</footer>
+</body>
+</html>

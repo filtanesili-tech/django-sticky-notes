@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}All Notes | Sticky Notes{% endblock %}
+{% block content %}
+<section class="intro">
+  <p class="eyebrow">YOUR PERSONAL BOARD</p>
+  <h1>All your notes, at a glance.</h1>
+  <p class="muted">Capture an idea before it slips away.</p>
+</section>
+{% if notes %}
+<div class="notes-grid">
+  {% for note in notes %}
+  <article class="note-card">
+    <p class="note-meta">{{ note.updated_at|date:"d M Y, H:i" }}</p>
+    <h2><a href="{% url 'note_detail' note.pk %}">{{ note.title }}</a></h2>
+    <p class="note-preview">{{ note.content|truncatechars:180 }}</p>
+    <p class="author">By {{ note.author|default:"Anonymous" }}</p>
+    <div class="card-actions">
+      <a href="{% url 'note_detail' note.pk %}">Open note</a>
+      <a href="{% url 'note_update' note.pk %}">Edit</a>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+{% else %}
+<div class="empty-state">
+  <div class="empty-icon">🗒️</div><h2>Your board is empty</h2>
+  <p class="muted">Create your first sticky note to get started.</p>
+  <a class="button" href="{% url 'note_create' %}">Create your first note</a>
+</div>
+{% endif %}
+{% endblock %}
