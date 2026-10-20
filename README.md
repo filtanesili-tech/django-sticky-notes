@@ -65,3 +65,4 @@ See `docs/design_diagrams.md` for the use-case, flow and model diagrams.
    ```
 3. Replace the placeholder in `sticky_github.txt` with your actual public repository URL.
 4. Do not upload the virtual environment or `db.sqlite3`.
+
